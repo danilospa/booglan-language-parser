@@ -15,5 +15,9 @@ module Booglan
     def verbs
       words.select { |w| Booglan::verb?(w) }
     end
+
+    def subjunctive_verbs
+      words.select { |w| Booglan::subjunctive_verb?(w) }
+    end
   end
 end

@@ -39,4 +39,24 @@ RSpec.describe Booglan do
       expect(described_class.verb?(word)).to be_falsy
     end
   end
+
+  describe '.subjunctive_verb?' do
+    it 'returns true for verb starting on bar letter' do
+      word = 'glkh'
+      allow(described_class).to receive(:verb?).with(word).and_return(true)
+      expect(described_class.subjunctive_verb?(word)).to be_truthy
+    end
+
+    it 'returns false for non verb starting on bar letter' do
+      word = 'glkh'
+      allow(described_class).to receive(:verb?).with(word).and_return(false)
+      expect(described_class.subjunctive_verb?(word)).to be_falsy
+    end
+
+    it 'returns false for verb starting on foo letter' do
+      word = 'rlkh'
+      allow(described_class).to receive(:verb?).with(word).and_return(true)
+      expect(described_class.subjunctive_verb?(word)).to be_falsy
+    end
+  end
 end

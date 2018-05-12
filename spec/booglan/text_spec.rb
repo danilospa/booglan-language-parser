@@ -16,4 +16,10 @@ RSpec.describe Booglan::Text do
       expect(subject.verbs.size).to be 71
     end
   end
+
+  describe '#subjunctive_verbs' do
+    it 'returns correct number of subjunctive verbs' do
+      expect(subject.subjunctive_verbs.size).to be 58
+    end
+  end
 end

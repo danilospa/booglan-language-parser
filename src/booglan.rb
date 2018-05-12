@@ -10,4 +10,8 @@ module Booglan
   def self.verb?(word)
     word.size > 7 and BAR_LETTERS.include?(word[-1])
   end
+
+  def self.subjunctive_verb?(word)
+    verb?(word) and BAR_LETTERS.include?(word[0])
+  end
 end
