@@ -6,4 +6,8 @@ module Booglan
   def self.preposition?(word)
     word.size == 5 and BAR_LETTERS.include?(word[-1]) and !word.include?('l')
   end
+
+  def self.verb?(word)
+    word.size > 7 and BAR_LETTERS.include?(word[-1])
+  end
 end

@@ -22,4 +22,21 @@ RSpec.describe Booglan do
       expect(described_class.preposition?(word)).to be_falsy
     end
   end
+
+  describe '.verb?' do
+    it 'returns true for 8 or more letters word ending on bar letter' do
+      word = 'xmhxmmjg'
+      expect(described_class.verb?(word)).to be_truthy
+    end
+
+    it 'returns false for 6 letters word' do
+      word = 'mhxmmjg'
+      expect(described_class.verb?(word)).to be_falsy
+    end
+
+    it 'returns false for 7 letters word ending on foo letter' do
+      word = 'xmhxmmjt'
+      expect(described_class.verb?(word)).to be_falsy
+    end
+  end
 end

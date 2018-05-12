@@ -11,5 +11,9 @@ module Booglan
     def prepositions
       words.select { |w| Booglan::preposition?(w) }
     end
+
+    def verbs
+      words.select { |w| Booglan::verb?(w) }
+    end
   end
 end
