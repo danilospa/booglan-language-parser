@@ -5,7 +5,7 @@
 First, the Booglan letters are classified in two groups: the letters r, t, c, d and b are called "foo letters" while the other letters are called "bar letters".  
 The linguists have discovered that in the Booglan language, the prepositions are the words of exactly 5 letters which end in a bar letter and do not contain the letter l.
 
-Another interesting fact discovered by linguists is that, in the Booglan language, verbs are words of 7 letters or more that end in a bar letter. Furthermore, if a verb starts in a bar letter, then the verb is inflected in its subjunctive form.
+Another interesting fact discovered by linguists is that, in the Booglan language, verbs are words of 8 letters or more that end in a bar letter. Furthermore, if a verb starts in a bar letter, then the verb is inflected in its subjunctive form.
 
 In Booglan, like in our system, words are always ordered lexicographically, but the challenge is that the order of the letters in the Booglan alphabet is different from ours. Their alphabet, in order, is: twhzkdfvcjxlrnqmgpsb.
 
@@ -29,4 +29,9 @@ bundle install
 To run the tests:
 ```ruby
 bundle exec rspec
+```
+
+To get information about a specific text on Booglan language, execute:
+```ruby
+ruby src/index.rb path_to_file
 ```
