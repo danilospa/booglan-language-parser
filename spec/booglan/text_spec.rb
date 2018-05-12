@@ -22,4 +22,10 @@ RSpec.describe Booglan::Text do
       expect(subject.subjunctive_verbs.size).to be 58
     end
   end
+
+  describe '#pretty_numbers' do
+    it 'returns correct number of uniq pretty numbers' do
+      expect(subject.pretty_numbers.uniq.size).to be 140
+    end
+  end
 end

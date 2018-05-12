@@ -59,4 +59,28 @@ RSpec.describe Booglan do
       expect(described_class.subjunctive_verb?(word)).to be_falsy
     end
   end
+
+  describe '.to_number' do
+    it 'returns correct number representation based on definition' do
+      word = 'hnh'
+      expect(described_class.to_number(word)).to be 1062
+    end
+  end
+
+  describe '.pretty_number?' do
+    it 'returns true for number equal or greater than 422224 and divisible by 3' do
+      word = 'flmrh' # 2cfb6/422226
+      expect(described_class.pretty_number?(word)).to be_truthy
+    end
+
+    it 'returns false for number lower than 422223 and divisible by 3' do
+      word = 'zlmrh' # 2cfb3/422223
+      expect(described_class.pretty_number?(word)).to be_falsy
+    end
+
+    it 'returns false for number equal or greater than 422224 and not divisible by 3' do
+      word = 'klmrh' # 2cfb4/422224
+      expect(described_class.pretty_number?(word)).to be_falsy
+    end
+  end
 end

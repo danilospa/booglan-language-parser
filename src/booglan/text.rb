@@ -19,5 +19,9 @@ module Booglan
     def subjunctive_verbs
       words.select { |w| Booglan::subjunctive_verb?(w) }
     end
+
+    def pretty_numbers
+      words.select { |w| Booglan::pretty_number?(w) }
+    end
   end
 end
