@@ -83,4 +83,28 @@ RSpec.describe Booglan do
       expect(described_class.pretty_number?(word)).to be_falsy
     end
   end
+
+  describe '.sort' do
+    it 'returns true for number equal or greater than 422224 and divisible by 3' do
+      expect(described_class.sort(['ttjp', 'ttwhsrg'])).to eq ['ttwhsrg', 'ttjp']
+    end
+  end
+
+  describe '.compare_words' do
+    it 'returns 1 when second word comes before the first on alphabetically order' do
+      expect(described_class.compare_words('ttjp', 'ttwhsrg')).to be 1
+    end
+
+    it 'returns -1 when first word comes before the second on alphabetically order' do
+      expect(described_class.compare_words('ttwhsrg', 'ttjp')).to be -1
+    end
+
+    it 'returns 1 when second word has the same letters than the first with less length' do
+      expect(described_class.compare_words('ttjpd', 'ttjp')).to be 1
+    end
+
+    it 'returns -1 when first word has the same letters than the second with less length' do
+      expect(described_class.compare_words('ttjp', 'ttjpd')).to be -1
+    end
+  end
 end

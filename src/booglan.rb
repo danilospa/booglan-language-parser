@@ -26,6 +26,22 @@ module Booglan
     number >= 422224 and number % 3 == 0
   end
 
+  def self.sort(words)
+    words.sort { |w1, w2| compare_words(w1, w2) }
+  end
+
+  def self.compare_words(first_word, second_word)
+    different_chars = first_word.chars.zip(second_word.chars).detect do |chars|
+      first_word_char, second_word_char = chars
+      first_word_char != second_word_char
+    end
+    first_word_char, second_word_char = different_chars
+    return -1 if first_word_char.nil?
+    return 1 if second_word_char.nil?
+    # The spaceship operator returns 1 when first argument is greater than the second. Otherwise, it returns -1
+    ALPHABET.find_index(first_word_char) <=> ALPHABET.find_index(second_word_char)
+  end
+
   private
 
   def self.from_decimal(number)

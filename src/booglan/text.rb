@@ -23,5 +23,9 @@ module Booglan
     def pretty_numbers
       words.select { |w| Booglan::pretty_number?(w) }
     end
+
+    def ordered_vocabulary
+      Booglan::sort(words).uniq
+    end
   end
 end

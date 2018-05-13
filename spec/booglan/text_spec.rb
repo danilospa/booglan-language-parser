@@ -1,6 +1,6 @@
 require './src/booglan/text'
 
-TEXT = File.read('./spec/fixtures/text')
+TEXT = File.read('./spec/fixtures/example_booglan_text')
 
 RSpec.describe Booglan::Text do
   subject { described_class.new(TEXT) }
@@ -26,6 +26,13 @@ RSpec.describe Booglan::Text do
   describe '#pretty_numbers' do
     it 'returns correct number of uniq pretty numbers' do
       expect(subject.pretty_numbers.uniq.size).to be 140
+    end
+  end
+
+  describe '#ordered_vocabulary' do
+    it 'returns correct ordered vocabulary' do
+      expected = File.read('./spec/fixtures/ordered_vocabulary_for_example_text')
+      expect(subject.ordered_vocabulary).to eq expected.split
     end
   end
 end
