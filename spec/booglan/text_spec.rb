@@ -1,38 +1,45 @@
 require './src/booglan/text'
 
-TEXT = File.read('./spec/fixtures/example_booglan_text')
-
 RSpec.describe Booglan::Text do
-  subject { described_class.new(TEXT) }
+  let(:text) { 'example text' }
+  subject { described_class.new(text) }
 
   describe '#prepositions' do
-    it 'returns correct number of prepositions' do
-      expect(subject.prepositions.size).to be 49
+    it 'returns correct prepositions' do
+      allow(Booglan).to receive(:preposition?).with('example').and_return(true)
+      allow(Booglan).to receive(:preposition?).with('text').and_return(false)
+      expect(subject.prepositions).to eq ['example']
     end
   end
 
   describe '#verbs' do
-    it 'returns correct number of verbs' do
-      expect(subject.verbs.size).to be 71
+    it 'returns correct verbs' do
+      allow(Booglan).to receive(:verb?).with('example').and_return(true)
+      allow(Booglan).to receive(:verb?).with('text').and_return(false)
+      expect(subject.verbs).to eq ['example']
     end
   end
 
   describe '#subjunctive_verbs' do
-    it 'returns correct number of subjunctive verbs' do
-      expect(subject.subjunctive_verbs.size).to be 58
+    it 'returns correct subjunctive verbs' do
+      allow(Booglan).to receive(:subjunctive_verb?).with('example').and_return(true)
+      allow(Booglan).to receive(:subjunctive_verb?).with('text').and_return(false)
+      expect(subject.subjunctive_verbs).to eq ['example']
     end
   end
 
   describe '#pretty_numbers' do
-    it 'returns correct number of uniq pretty numbers' do
-      expect(subject.pretty_numbers.uniq.size).to be 140
+    it 'returns correct pretty numbers' do
+      allow(Booglan).to receive(:pretty_number?).with('example').and_return(true)
+      allow(Booglan).to receive(:pretty_number?).with('text').and_return(false)
+      expect(subject.pretty_numbers).to eq ['example']
     end
   end
 
   describe '#ordered_vocabulary' do
-    it 'returns correct ordered vocabulary' do
-      expected = File.read('./spec/fixtures/ordered_vocabulary_for_example_text')
-      expect(subject.ordered_vocabulary).to eq expected.split
+    it 'returns correct ordered vocabulary without duplicates' do
+      allow(Booglan).to receive(:sort).with(['example', 'text']).and_return(['vocabulary', 'ordered', 'with', 'two', 'with'])
+      expect(subject.ordered_vocabulary).to eq ['vocabulary', 'ordered', 'with', 'two']
     end
   end
 end

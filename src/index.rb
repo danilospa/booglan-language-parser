@@ -1,4 +1,4 @@
-require './src/booglan/text'
+require './src/booglan'
 
 file = ARGV[0]
 text = File.read(file)

@@ -1,5 +1,3 @@
-require './src/booglan'
-
 module Booglan
   class Text
     attr_reader :words
